@@ -5,28 +5,47 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+import "@fontsource/ibm-plex-sans"
+
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <Seo title="All posts" />
-        <Bio />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    )
-  }
+  // if (posts.length === 0) {
+  //   return (
+  //     <Layout location={location} title={siteTitle}>
+  //       <Seo title="All posts" />
+  //       <Bio />
+  //       <p>
+  //         No blog posts found. Add markdown posts to "content/blog" (or the
+  //         directory you specified for the "gatsby-source-filesystem" plugin in
+  //         gatsby-config.js).
+  //       </p>
+  //     </Layout>
+  //   )
+  // }
+
+  console.log(window.innerWidth)
 
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
       <Bio />
+
+      <div
+        className="divider-bottom"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <h2 style={{ color: "var(--heading-color)" }}>Latest Posts</h2>
+        {/* <a href="#" style={{ color: "var(--heading-color)", fontSize: 20 }}>
+          Read all posts
+        </a> */}
+      </div>
+
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
@@ -38,22 +57,39 @@ const BlogIndex = ({ data, location }) => {
                 itemScope
                 itemType="http://schema.org/Article"
               >
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
+                <div style={{ lineHeight: 0 }}>
+                  <h3>
+                    <Link
+                      to={post.fields.slug}
+                      itemProp="url"
+                      style={{ color: "var(--blog-title)" }}
+                    >
+                      <span
+                        itemProp="headline"
+                        style={{ fontFamily: "IBM Plex Sans" }}
+                      >
+                        {title}
+                      </span>
                     </Link>
-                  </h2>
-                  <small>{post.frontmatter.date}</small>
-                </header>
-                <section>
+                  </h3>
+                  <span
+                    style={{
+                      fontFamily: "IBM Plex Sans",
+                      fontSize: 20,
+                      color: "var(--link-color)",
+                    }}
+                  >
+                    {post.frontmatter.date}
+                  </span>
+                </div>
+                {/* <section>
                   <p
                     dangerouslySetInnerHTML={{
                       __html: post.frontmatter.description || post.excerpt,
                     }}
                     itemProp="description"
                   />
-                </section>
+                </section> */}
               </article>
             </li>
           )

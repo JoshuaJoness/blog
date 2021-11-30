@@ -31,8 +31,35 @@ const Bio = () => {
   const social = data.site.siteMetadata?.social
 
   return (
-    <div className="bio">
-      <StaticImage
+    <div /* className="bio" */>
+      <img src="/leap_of_faith.png" className="splash-image" />
+
+      <section className="centered-text">
+        <span
+          style={{
+            fontSize: 48,
+            fontFamily: "sans-serif",
+            fontFamily: "Montserrat",
+            fontWeight: 700,
+          }}
+        >
+          Hi.
+        </span>
+        <p
+          style={{
+            color: "var(--bio-text)",
+            marginBottom: 100,
+            fontFamily: "IBM Plex Sans",
+          }}
+        >
+          I'm Joshua Jones, a software engineer passionate about building for
+          the web.
+        </p>
+      </section>
+
+      {/* <div className="divider" /> */}
+
+      {/* <StaticImage
         className="bio-avatar"
         layout="fixed"
         formats={["auto", "webp", "avif"]}
@@ -41,8 +68,8 @@ const Bio = () => {
         height={50}
         quality={95}
         alt="Profile picture"
-      />
-      {author?.name && (
+      /> */}
+      {/* {author?.name && (
         <p>
           Written by <strong>{author.name}</strong> {author?.summary || null}
           {` `}
@@ -50,7 +77,7 @@ const Bio = () => {
             You should follow them on Twitter
           </a>
         </p>
-      )}
+      )} */}
     </div>
   )
 }
