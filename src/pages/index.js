@@ -25,8 +25,6 @@ const BlogIndex = ({ data, location }) => {
   //   )
   // }
 
-  console.log(window.innerWidth)
-
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />

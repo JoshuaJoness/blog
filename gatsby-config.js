@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Modern Architect`,
+    title: `Hustle and Code`,
     author: {
       name: `Joshua Jones`,
       summary: `digital nomad building useful things.`,
